@@ -101,7 +101,7 @@ class Camera(nn.Module):
                 invdepthmap = invdepthmap * depth_params["scale"] + depth_params["offset"]
         if invdepthmap.ndim != 2:
             invdepthmap = invdepthmap[..., 0]
-        return torch.from_numpy(invdepthmap[None]).to('cuda')
+        return torch.tensor(invdepthmap[None]).to('cuda')
     
     @property
     def original_image(self):

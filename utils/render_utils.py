@@ -186,7 +186,7 @@ def generate_path(viewpoint_cameras, n_frames=480):
       cam = copy.deepcopy(viewpoint_cameras[0])
       cam.image_height = int(cam.image_height / 2) * 2
       cam.image_width = int(cam.image_width / 2) * 2
-      cam.world_view_transform = torch.from_numpy(np.linalg.inv(c2w).T).float().cuda()
+      cam.world_view_transform = torch.tensor(np.linalg.inv(c2w).T).float().cuda()
       cam.full_proj_transform = (cam.world_view_transform.unsqueeze(0).bmm(cam.projection_matrix.unsqueeze(0))).squeeze(0)
       cam.camera_center = cam.world_view_transform.inverse()[3, :3]
       
