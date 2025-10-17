@@ -295,6 +295,8 @@ if __name__ == "__main__":
     args = parser.parse_args(sys.argv[1:])
     if args.test_iterations[0] == -1:
         args.test_iterations = [i for i in range(5000, args.iterations + 1, 5000)]
+    if args.save_iterations[0] == -1:
+        args.save_iterations = [i for i in range(10_000, args.iterations + 1, 10_000)]
     args.test_iterations.append(args.iterations)
     args.save_iterations.append(args.iterations)    
     logger = get_logger(args.model_path)
