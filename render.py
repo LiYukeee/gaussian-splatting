@@ -54,7 +54,7 @@ def render_set_for_FPS_test(model_path, name, iteration, views, gaussians, pipel
                 fps = 1.0 / t_list.mean()
                 print(f'Test FPS: \033[1;35m{fps:.5f}\033[0m')
                 fps_list.append(fps)
-            if step > t_list_len * test_times:
+            if step > t_list_len * (test_times + warmup_times):
                 # write fps info to a txt file
                 with open(os.path.join(model_path, "point_cloud", "iteration_{}".format(iteration), "FPS.txt"), 'w') as f:
                     f.write("Average FPS: {:.5f}\n".format(np.mean(fps_list)))
