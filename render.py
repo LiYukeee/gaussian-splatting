@@ -50,7 +50,7 @@ def render_set_for_FPS_test(model_path, name, iteration, views, gaussians, pipel
             t1 = time.time()
             t_list[step % t_list_len] = t1 - t0
 
-            if step % 100 == 0 and step > t_list_len * warmup_times:
+            if step % t_list_len == 0 and step > t_list_len * warmup_times:
                 fps = 1.0 / t_list.mean()
                 print(f'Test FPS: \033[1;35m{fps:.5f}\033[0m')
                 fps_list.append(fps)
